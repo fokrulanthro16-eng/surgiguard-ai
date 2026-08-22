@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Camera, CameraOff, Sparkles, RefreshCw, Upload, Crosshair, CheckCircle2, AlertTriangle, Layers } from 'lucide-react';
+import { Camera, CameraOff, Sparkles, RefreshCw, Upload, Crosshair, CheckCircle2, AlertTriangle, Layers, Eye, ShieldAlert } from 'lucide-react';
 import { DetectedItem, ScenarioType, SurgicalPhase } from '@/lib/types';
+import { evaluateFieldOcclusion, OcclusionAnalysisResult } from '@/lib/occlusionEngine';
 import clsx from 'clsx';
 
 interface TrayCanvasProps {
@@ -23,13 +24,18 @@ export const TrayCanvas: React.FC<TrayCanvasProps> = ({
   currentPhase,
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [cameraActive, setCameraActive] = useState<boolean>(false);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<DetectedItem | null>(null);
   const [cameraError, setCameraError] = useState<string | null>(null);
+
+  // Field Occlusion evaluation (Scenario B has minor occlusion, Scenario C has partial, normal is clear)
+  const occlusionResult: OcclusionAnalysisResult = evaluateFieldOcclusion(
+    activeScenario === 'SCENARIO_B' ? 0.82 : activeScenario === 'SCENARIO_C' ? 0.78 : 0.96,
+    activeScenario === 'SCENARIO_B' ? 0.18 : activeScenario === 'SCENARIO_C' ? 0.22 : 0.04
+  );
 
   // Start webcam
   const startCamera = async () => {
@@ -110,26 +116,43 @@ export const TrayCanvas: React.FC<TrayCanvasProps> = ({
           </div>
           <div>
             <h2 className="text-sm font-bold tracking-wide text-slate-100 flex items-center gap-2">
-              MAYO TRAY COMPUTER VISION SCANNER
+              MAYO TRAY OPTICAL VISION SCANNER
               <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950 text-cyan-400 border border-cyan-800">
                 GEMINI 2.5 FLASH
               </span>
             </h2>
             <p className="text-[11px] text-slate-400">
-              Live intra-operative ROI detection with radiopaque x-ray marker verification
+              Live intra-operative ROI detection with radiopaque marker &amp; occlusion monitoring
             </p>
           </div>
         </div>
 
         {/* Action buttons */}
         <div className="flex items-center gap-2">
+          {/* Occlusion confidence badge */}
+          <div
+            className={clsx(
+              'flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold border',
+              occlusionResult.level === 'CLEAR'
+                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-700'
+                : occlusionResult.level === 'PARTIALLY_OCCLUDED'
+                ? 'bg-amber-950/80 text-amber-300 border-amber-600'
+                : 'bg-red-950/80 text-red-300 border-hazard-red animate-pulse'
+            )}
+            title={occlusionResult.advisory}
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>VISIBILITY: {(occlusionResult.visibilityScore * 100).toFixed(0)}%</span>
+            <span>[{occlusionResult.level}]</span>
+          </div>
+
           {!cameraActive ? (
             <button
               onClick={startCamera}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 transition shadow-sm"
             >
               <Camera className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Enable Webcam</span>
+              <span>Webcam</span>
             </button>
           ) : (
             <div className="flex items-center gap-2">
@@ -162,7 +185,7 @@ export const TrayCanvas: React.FC<TrayCanvasProps> = ({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
           >
             <Upload className="w-3.5 h-3.5 text-slate-400" />
-            <span>Upload Image</span>
+            <span>Upload</span>
           </button>
 
           <button
@@ -252,7 +275,7 @@ export const TrayCanvas: React.FC<TrayCanvasProps> = ({
                   </div>
 
                   <div className="text-[11px] font-mono text-slate-500 flex items-center justify-between">
-                    <span>STATUS: LIVE STREAM READY</span>
+                    <span>OCCLUSION STATUS: {occlusionResult.level}</span>
                     <span className="text-cyan-400 font-semibold">CLICK &quot;TRIGGER AI SCAN&quot; TO RECONCILE</span>
                   </div>
                 </div>

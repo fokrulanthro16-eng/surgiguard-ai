@@ -25,6 +25,13 @@ import {
   PRESET_SCENARIOS 
 } from '@/lib/mockData';
 import { getMockGeminiAnalysis } from '@/lib/gemini';
+import { buildFHIRBundle } from '@/lib/fhir';
+import { 
+  evaluateGravimetricTelemetry, 
+  SpongeWeighingEntry, 
+  GravimetricTelemetry as GravimetricTelemetryType 
+} from '@/lib/gravimetricEngine';
+import { ParsedVoiceCommand } from '@/lib/voiceCommand';
 
 import { Header } from '@/components/Header';
 import { TrayCanvas } from '@/components/TrayCanvas';
@@ -33,6 +40,8 @@ import { GeminiArbiter } from '@/components/GeminiArbiter';
 import { WHOChecklist } from '@/components/WHOChecklist';
 import { AuditBlackbox } from '@/components/AuditBlackbox';
 import { DynamicPackModal } from '@/components/DynamicPackModal';
+import { GravimetricTelemetry } from '@/components/GravimetricTelemetry';
+import { VoiceCommandBar } from '@/components/VoiceCommandBar';
 
 export default function SurgiGuardCockpit() {
   // Core State
@@ -57,6 +66,22 @@ export default function SurgiGuardCockpit() {
   });
   const [pristineChainBackup, setPristineChainBackup] = useState<AuditBlock[] | null>(null);
   const [isTampered, setIsTampered] = useState<boolean>(false);
+
+  // Gravimetric Blood Loss Telemetry State
+  const [spongeWeighings, setSpongeWeighings] = useState<SpongeWeighingEntry[]>([
+    {
+      id: 'init-weight-1',
+      spongeType: 'lap-sponge-4x4',
+      count: 2,
+      wetWeightGrams: 280,
+      dryBaselineGrams: 40,
+      netFluidGrams: 240,
+      bloodLossMl: 226.4,
+      timestamp: Date.now() - 1200000,
+    },
+  ]);
+
+  const gravimetricTelemetry: GravimetricTelemetryType = evaluateGravimetricTelemetry(spongeWeighings);
 
   const prevGateStatus = useRef<string>('HOLD');
 
@@ -100,7 +125,6 @@ export default function SurgiGuardCockpit() {
   const commitAuditEvent = useCallback(
     async (eventType: any, actor: string, payload: Record<string, any>) => {
       setAuditChain((prevChain) => {
-        // Appending event asynchronously
         appendAuditEvent(prevChain, eventType, actor, payload).then((newChain) => {
           verifyAuditChain(newChain).then((result) => {
             setAuditChain(newChain);
@@ -260,7 +284,6 @@ export default function SurgiGuardCockpit() {
   // Simulate Malicious Tamper in Audit Blackbox
   const handleSimulateTamper = async () => {
     if (auditChain.length < 2) {
-      // Append a dummy block first if only genesis exists
       const updated = await appendAuditEvent(auditChain, 'BASELINE_INITIALIZED', 'TEST_ACTOR', { test: true });
       setAuditChain(updated);
     }
@@ -289,19 +312,98 @@ export default function SurgiGuardCockpit() {
     }
   };
 
+  // Record sponge gravimetric weighing entry
+  const handleAddSpongeWeighing = async (entry: SpongeWeighingEntry) => {
+    setSpongeWeighings((prev) => [...prev, entry]);
+    await commitAuditEvent('TRAY_COUNT_UPDATED', 'GRAVIMETRIC_SCALE_OR4', {
+      weighedType: entry.spongeType,
+      wetWeightGrams: entry.wetWeightGrams,
+      bloodLossMl: entry.bloodLossMl,
+    });
+  };
+
+  const handleResetScale = () => {
+    setSpongeWeighings([]);
+  };
+
+  // Voice Command Action Handler
+  const handleVoiceCommand = async (command: ParsedVoiceCommand) => {
+    switch (command.intent) {
+      case 'TRIGGER_SCAN':
+        await triggerAiScan();
+        break;
+      case 'ADD_STERILE_PACK':
+        if (command.parameters.itemId && command.parameters.quantity) {
+          await handleAddSterilePack(
+            command.parameters.itemId,
+            command.parameters.quantity,
+            'VOICE_DISPATCH_COMMAND'
+          );
+        }
+        break;
+      case 'CONFIRM_WHO_PHASE':
+        if (command.parameters.phase) {
+          await handleSignAllPhase(command.parameters.phase);
+        }
+        break;
+      case 'SPEAK_STATUS_REPORT':
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+          const report = reconciliation.isCleared
+            ? 'SurgiGuard Status Report: All surgical items 100% reconciled. Zero items in cavity. WHO Sign-Out verified. Surgical closure gate CLEARED [GO].'
+            : `SurgiGuard Status Report: Warning. Active discrepancy hold. Total delta is ${reconciliation.totalDelta}, and ${reconciliation.totalInCavity} items logged in patient cavity. Closure gate locked on HOLD.`;
+          const utterance = new SpeechSynthesisUtterance(report);
+          window.speechSynthesis.speak(utterance);
+        }
+        break;
+      case 'TARE_SCALE':
+        handleResetScale();
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Export standard FHIR R4 Bundle JSON
+  const handleExportFHIRBundle = () => {
+    const bundle = buildFHIRBundle(
+      'SG-9042',
+      'Laparoscopic Colectomy',
+      items,
+      reconciliation,
+      whoState,
+      gravimetricTelemetry.totalBloodLossMl,
+      auditChain
+    );
+
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(bundle, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute('href', dataStr);
+    downloadAnchor.setAttribute('download', `FHIR-R4-Bundle-SG9042-${Date.now()}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-obsidian-950 text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* HUD Header */}
+      {/* HUD Header with v2.0 badge and FHIR Export */}
       <Header
         gateStatus={reconciliation.gateStatus}
         currentPhase={currentPhase}
         onPhaseChange={setCurrentPhase}
         voiceEnabled={voiceEnabled}
         onToggleVoice={() => setVoiceEnabled((v) => !v)}
+        onExportFHIR={handleExportFHIRBundle}
       />
 
       {/* Main Cockpit Body */}
-      <main className="flex-1 p-3 md:p-4 space-y-4 max-w-[1700px] w-full mx-auto">
+      <main className="flex-1 p-3 md:p-4 space-y-4 max-w-[1750px] w-full mx-auto">
+        {/* Touchless Hands-Free Voice Command Bar */}
+        <VoiceCommandBar
+          onExecuteCommand={handleVoiceCommand}
+          voiceEnabled={voiceEnabled}
+        />
+
         {/* Top Section: 60% Left (Tray Vision Canvas) + 40% Right (Gemini AI Arbiter) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           <div className="lg:col-span-7 h-[580px]">
@@ -326,14 +428,24 @@ export default function SurgiGuardCockpit() {
           </div>
         </div>
 
-        {/* Middle Section: Full-Width Deterministic Balance Matrix */}
-        <div className="min-h-[380px]">
-          <DeterministicRegistry
-            items={items}
-            reconciliation={reconciliation}
-            onUpdateCount={handleUpdateCount}
-            onOpenPackModal={() => setIsPackModalOpen(true)}
-          />
+        {/* Gravimetric Telemetry & Deterministic Matrix Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div className="lg:col-span-4 min-h-[380px]">
+            <GravimetricTelemetry
+              telemetry={gravimetricTelemetry}
+              onAddWeighing={handleAddSpongeWeighing}
+              onResetScale={handleResetScale}
+            />
+          </div>
+
+          <div className="lg:col-span-8 min-h-[380px]">
+            <DeterministicRegistry
+              items={items}
+              reconciliation={reconciliation}
+              onUpdateCount={handleUpdateCount}
+              onOpenPackModal={() => setIsPackModalOpen(true)}
+            />
+          </div>
         </div>
 
         {/* Bottom Section: 50% WHO Safety Checklist + 50% Cryptographic Audit Blackbox */}

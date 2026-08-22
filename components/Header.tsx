@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { GateStatus, SurgicalPhase } from '@/lib/types';
-import { Shield, ShieldAlert, ShieldCheck, Activity, Volume2, VolumeX, Clock, Cpu } from 'lucide-react';
+import { Shield, ShieldAlert, ShieldCheck, Activity, Volume2, VolumeX, Clock, Cpu, Download, FileText } from 'lucide-react';
 import clsx from 'clsx';
 
 interface HeaderProps {
@@ -11,6 +11,7 @@ interface HeaderProps {
   onPhaseChange: (phase: SurgicalPhase) => void;
   voiceEnabled: boolean;
   onToggleVoice: () => void;
+  onExportFHIR?: () => void;
   caseId?: string;
   procedureName?: string;
   orRoom?: string;
@@ -29,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   onPhaseChange,
   voiceEnabled,
   onToggleVoice,
+  onExportFHIR,
   caseId = 'SG-9042',
   procedureName = 'Laparoscopic Colectomy',
   orRoom = 'OR Suite 04',
@@ -54,18 +56,33 @@ export const Header: React.FC<HeaderProps> = ({
             <Shield className="w-3.5 h-3.5" /> SURGIGUARD AI
           </span>
           <span className="text-slate-600">|</span>
-          <span className="bg-cyan-950/60 border border-cyan-800/50 text-cyan-300 px-2 py-0.5 rounded text-[10px] tracking-wider uppercase font-semibold">
-            FDA 21 CFR Part 11 Aligned Architecture
+          <span className="bg-cyan-950/80 border border-cyan-700 text-cyan-300 px-2 py-0.5 rounded text-[10px] tracking-wider uppercase font-bold animate-pulse">
+            v2.0 ENTERPRISE CLINICAL SUITE
           </span>
-          <span className="hidden md:inline text-slate-500 text-[11px]">
+          <span className="hidden md:inline bg-purple-950/70 border border-purple-800 text-purple-300 px-2 py-0.5 rounded text-[10px] tracking-wider uppercase font-semibold">
+            FHIR R4 &bull; LOINC 80347-8 &bull; SNOMED-CT
+          </span>
+          <span className="hidden lg:inline text-slate-500 text-[11px]">
             Zero-Hallucination Deterministic Safety Kernel
           </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          {onExportFHIR && (
+            <button
+              onClick={onExportFHIR}
+              className="flex items-center gap-1 px-2.5 py-0.5 rounded bg-purple-950/80 hover:bg-purple-900 text-purple-300 border border-purple-700 text-[11px] font-semibold transition"
+              title="Download HL7 FHIR R4 Bundle JSON"
+            >
+              <FileText className="w-3 h-3 text-purple-400" />
+              <span>Export FHIR R4</span>
+            </button>
+          )}
+
           <div className="flex items-center gap-1.5 text-slate-300">
             <Clock className="w-3.5 h-3.5 text-slate-400" />
             <span className="font-mono text-xs">{time || '00:00:00'} UTC</span>
           </div>
+
           <button
             onClick={onToggleVoice}
             title={voiceEnabled ? 'Mute Spoken OR Broadcasts' : 'Unmute Spoken OR Broadcasts'}
