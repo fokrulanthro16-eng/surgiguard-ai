@@ -1,83 +1,104 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
   <defs>
     <linearGradient id="bgGrav" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#06080D"/>
-      <stop offset="100%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#0B0F17"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradGrav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95"/>
     </linearGradient>
   </defs>
 
-  <rect width="1000" height="500" fill="url(#bgGrav)"/>
+  <!-- Background -->
+  <rect width="800" height="480" fill="url(#bgGrav)"/>
 
-  <!-- Header -->
-  <g transform="translate(30, 25)">
-    <rect width="940" height="50" rx="10" fill="#0F172A" stroke="#EF4444" stroke-width="1.5"/>
-    <text x="20" y="32" fill="#EF4444" font-family="monospace" font-size="14" font-weight="bold">GRAVIMETRIC SPONGE FLUID &amp; ESTIMATED BLOOD LOSS (EBL) TELEMETRY</text>
-    <text x="690" y="32" fill="#FCA5A5" font-family="monospace" font-size="11">FORMULA: EBL (mL) = &Sigma;(Wet - Dry) &divide; 1.06 g/mL</text>
+  <!-- Medical Grid Background -->
+  <g opacity="0.08">
+    <path d="M 0 40 L 800 40 M 0 80 L 800 80 M 0 120 L 800 120 M 0 160 L 800 160 M 0 200 L 800 200 M 0 240 L 800 240 M 0 280 L 800 280 M 0 320 L 800 320 M 0 360 L 800 360 M 0 400 L 800 400 M 0 440 L 800 440" stroke="#38BDF8" stroke-width="1"/>
+    <path d="M 40 0 L 40 480 M 80 0 L 80 480 M 120 0 L 120 480 M 160 0 L 160 480 M 200 0 L 200 480 M 240 0 L 240 480 M 280 0 L 280 480 M 320 0 L 320 480 M 360 0 L 360 480 M 400 0 L 400 480 M 440 0 L 440 480 M 480 0 L 480 480 M 520 0 L 520 480 M 560 0 L 560 480 M 600 0 L 600 480 M 640 0 L 640 480 M 680 0 L 680 480 M 720 0 L 720 480 M 760 0 L 760 480" stroke="#38BDF8" stroke-width="1"/>
   </g>
 
-  <!-- Metric Gauges -->
-  <g transform="translate(30, 95)">
-    <!-- 1. EBL -->
-    <rect x="0" y="0" width="220" height="130" rx="12" fill="#1E293B" stroke="#EF4444" stroke-width="2"/>
-    <text x="16" y="28" fill="#94A3B8" font-family="monospace" font-size="11">ESTIMATED BLOOD LOSS</text>
-    <text x="16" y="75" fill="#EF4444" font-family="sans-serif" font-size="34" font-weight="black">358.5 mL</text>
-    <text x="16" y="105" fill="#34D399" font-family="monospace" font-size="11">&bull; CLASS I (&lt; 500 mL) [OK]</text>
-
-    <!-- 2. Gross Wet Weight -->
-    <rect x="240" y="0" width="220" height="130" rx="12" fill="#1E293B" stroke="#38BDF8"/>
-    <text x="256" y="28" fill="#94A3B8" font-family="monospace" font-size="11">TOTAL WET SCALE WEIGHT</text>
-    <text x="256" y="75" fill="#38BDF8" font-family="sans-serif" font-size="34" font-weight="black">480.0 g</text>
-    <text x="256" y="105" fill="#94A3B8" font-family="monospace" font-size="11">Radwag Serial Scale #04</text>
-
-    <!-- 3. Dry Tare Offset -->
-    <rect x="480" y="0" width="220" height="130" rx="12" fill="#1E293B" stroke="#64748B"/>
-    <text x="496" y="28" fill="#94A3B8" font-family="monospace" font-size="11">DRY TARE OFFSET</text>
-    <text x="496" y="75" fill="#CBD5E1" font-family="sans-serif" font-size="34" font-weight="black">&minus;100.0 g</text>
-    <text x="496" y="105" fill="#94A3B8" font-family="monospace" font-size="11">5 Lap Sponges @ 20g dry</text>
-
-    <!-- 4. Net Fluid -->
-    <rect x="720" y="0" width="220" height="130" rx="12" fill="#1E293B" stroke="#A855F7"/>
-    <text x="736" y="28" fill="#94A3B8" font-family="monospace" font-size="11">NET ABSORBED FLUID</text>
-    <text x="736" y="75" fill="#C084FC" font-family="sans-serif" font-size="34" font-weight="black">380.0 g</text>
-    <text x="736" y="105" fill="#94A3B8" font-family="monospace" font-size="11">Fluid density: 1.06 g/mL</text>
+  <!-- Top Header Banner -->
+  <g transform="translate(20, 16)">
+    <rect width="760" height="42" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.5"/>
+    <text x="16" y="27" fill="#EF4444" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" letter-spacing="1">GRAVIMETRIC SPONGE FLUID &amp; BLOOD LOSS TELEMETRY (v2.0)</text>
+    <text x="500" y="27" fill="#FCA5A5" font-family="ui-monospace, monospace" font-size="10">EBL (mL) = &Sigma;(Wet - Dry) &divide; 1.06 g/mL</text>
   </g>
 
-  <!-- Scale Telemetry Log Table -->
-  <g transform="translate(30, 245)">
-    <rect width="940" height="225" rx="12" fill="#0F172A" stroke="#1E293B"/>
-    <rect x="15" y="15" width="910" height="28" rx="6" fill="#0B0F17"/>
-    <text x="25" y="34" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold">SERIAL SCALE TELEMETRY LOG &bull; LOINC 55284-4 EXPORT</text>
+  <!-- Primary Metric Cards Row -->
+  <g transform="translate(20, 70)">
+    <!-- Metric 1: EBL -->
+    <rect x="0" y="0" width="180" height="110" rx="10" fill="#1E293B" stroke="#EF4444" stroke-width="2"/>
+    <text x="14" y="24" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">ESTIMATED BLOOD LOSS</text>
+    <text x="14" y="64" fill="#EF4444" font-family="system-ui, sans-serif" font-size="28" font-weight="900">98.11 mL</text>
+    <text x="14" y="92" fill="#34D399" font-family="ui-monospace, monospace" font-size="9.5">&bull; NORMAL (&lt; 500 mL) [OK]</text>
+
+    <!-- Metric 2: Wet Weight -->
+    <rect x="194" y="0" width="180" height="110" rx="10" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+    <text x="208" y="24" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">TOTAL WET SCALE WEIGHT</text>
+    <text x="208" y="64" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="28" font-weight="900">124.0 g</text>
+    <text x="208" y="92" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">Radwag Serial Scale #04</text>
+
+    <!-- Metric 3: Dry Tare Offset -->
+    <rect x="388" y="0" width="180" height="110" rx="10" fill="#1E293B" stroke="#64748B" stroke-width="1"/>
+    <text x="402" y="24" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">DRY TARE OFFSET</text>
+    <text x="402" y="64" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="28" font-weight="900">&minus;20.0 g</text>
+    <text x="402" y="92" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">1 Lap Sponge @ 20g dry</text>
+
+    <!-- Metric 4: Net Absorbed Fluid -->
+    <rect x="580" y="0" width="180" height="110" rx="10" fill="#1E293B" stroke="#A855F7" stroke-width="1"/>
+    <text x="594" y="24" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">NET ABSORBED FLUID</text>
+    <text x="594" y="64" fill="#C084FC" font-family="system-ui, sans-serif" font-size="28" font-weight="900">104.0 g</text>
+    <text x="594" y="92" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="9.5">Blood Density: 1.06 g/mL</text>
+  </g>
+
+  <!-- Telemetry Table Card -->
+  <g transform="translate(20, 195)">
+    <rect width="760" height="268" rx="12" fill="url(#cardGradGrav)" stroke="#1E293B" stroke-width="1"/>
+    <rect x="12" y="12" width="736" height="26" rx="5" fill="#0B0F17"/>
+    <text x="20" y="30" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10" font-weight="bold">SERIAL SCALE TELEMETRY LOG &bull; LOINC 55284-4 EXPORT</text>
 
     <!-- Table Header -->
-    <g transform="translate(25, 60)">
-      <text x="0" y="0" fill="#64748B" font-family="monospace" font-size="10">BATCH ID</text>
-      <text x="140" y="0" fill="#64748B" font-family="monospace" font-size="10">SPONGE TYPE</text>
-      <text x="340" y="0" fill="#64748B" font-family="monospace" font-size="10">COUNT</text>
-      <text x="440" y="0" fill="#64748B" font-family="monospace" font-size="10">WET WEIGHT</text>
-      <text x="580" y="0" fill="#64748B" font-family="monospace" font-size="10">DRY TARE</text>
-      <text x="720" y="0" fill="#64748B" font-family="monospace" font-size="10">BLOOD LOSS (EBL)</text>
+    <g transform="translate(20, 58)">
+      <text x="0" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">BATCH ID</text>
+      <text x="120" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">SPONGE TYPE</text>
+      <text x="280" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">COUNT</text>
+      <text x="360" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">WET WEIGHT</text>
+      <text x="480" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">DRY TARE</text>
+      <text x="600" y="0" fill="#64748B" font-family="ui-monospace, monospace" font-size="9">BLOOD LOSS (EBL)</text>
     </g>
 
     <!-- Row 1 -->
-    <g transform="translate(25, 95)">
-      <rect x="-10" y="-14" width="910" height="30" rx="4" fill="#0B0F17"/>
-      <text x="0" y="6" fill="#38BDF8" font-family="monospace" font-size="11">#WT-09411</text>
-      <text x="140" y="6" fill="#FFFFFF" font-family="sans-serif" font-size="11">Lap Sponge 4x4</text>
-      <text x="340" y="6" fill="#FFFFFF" font-family="monospace" font-size="11">2x</text>
-      <text x="440" y="6" fill="#38BDF8" font-family="monospace" font-size="11">280.0 g</text>
-      <text x="580" y="6" fill="#64748B" font-family="monospace" font-size="11">40.0 g</text>
-      <text x="720" y="6" fill="#EF4444" font-family="monospace" font-size="11" font-weight="bold">226.4 mL</text>
+    <g transform="translate(20, 88)">
+      <rect x="-8" y="-12" width="736" height="28" rx="4" fill="#0B0F17" stroke="#1E293B"/>
+      <text x="0" y="6" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10">#WT-10941</text>
+      <text x="120" y="6" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10">Lap Sponge 4x4 (Radiopaque)</text>
+      <text x="280" y="6" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="10">1x</text>
+      <text x="360" y="6" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10">124.0 g</text>
+      <text x="480" y="6" fill="#64748B" font-family="ui-monospace, monospace" font-size="10">20.0 g</text>
+      <text x="600" y="6" fill="#EF4444" font-family="ui-monospace, monospace" font-size="10" font-weight="bold">98.11 mL</text>
     </g>
 
     <!-- Row 2 -->
-    <g transform="translate(25, 135)">
-      <rect x="-10" y="-14" width="910" height="30" rx="4" fill="#0B0F17"/>
-      <text x="0" y="6" fill="#38BDF8" font-family="monospace" font-size="11">#WT-09412</text>
-      <text x="140" y="6" fill="#FFFFFF" font-family="sans-serif" font-size="11">Lap Sponge 4x4</text>
-      <text x="340" y="6" fill="#FFFFFF" font-family="monospace" font-size="11">3x</text>
-      <text x="440" y="6" fill="#38BDF8" font-family="monospace" font-size="11">200.0 g</text>
-      <text x="580" y="6" fill="#64748B" font-family="monospace" font-size="11">60.0 g</text>
-      <text x="720" y="6" fill="#EF4444" font-family="monospace" font-size="11" font-weight="bold">132.1 mL</text>
+    <g transform="translate(20, 126)">
+      <rect x="-8" y="-12" width="736" height="28" rx="4" fill="#0B0F17" stroke="#1E293B"/>
+      <text x="0" y="6" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10">#WT-10940</text>
+      <text x="120" y="6" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="10">4x4 Ray-Tec Gauze</text>
+      <text x="280" y="6" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="10">2x</text>
+      <text x="360" y="6" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10">48.0 g</text>
+      <text x="480" y="6" fill="#64748B" font-family="ui-monospace, monospace" font-size="10">8.0 g</text>
+      <text x="600" y="6" fill="#EF4444" font-family="ui-monospace, monospace" font-size="10" font-weight="bold">37.74 mL</text>
+    </g>
+
+    <!-- Clinical Advisory Box -->
+    <g transform="translate(20, 168)">
+      <rect x="-8" y="0" width="736" height="54" rx="6" fill="#064E3B" stroke="#10B981"/>
+      <text x="8" y="20" fill="#ECFDF5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="bold">HEMOVIGILANCE PROTOCOL: CLASS I PARAMETERS</text>
+      <text x="8" y="38" fill="#D1FAE5" font-family="system-ui, sans-serif" font-size="9.5">Total blood loss is within normal operating expectations (&lt; 500 mL). Vital signs and serial hematocrit stable.</text>
     </g>
   </g>
 </svg>

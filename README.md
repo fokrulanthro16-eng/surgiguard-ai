@@ -107,18 +107,18 @@ $$\text{CurrentHash}_k = \text{SHA256}(\text{Index}_k \,\|\, \text{Timestamp}_k 
 
 ---
 
-## 5. Visual Interface Previews
+### 5. Visual Interface Previews
 
-### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
-![Scenario A Nominal Cleared Preview](./docs/screenshots/cockpit-nominal-cleared.svg)
+#### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
+![Scenario A Nominal Cleared](./docs/screenshots/cockpit-nominal-cleared.svg)
 
-### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
-![Scenario B Discrepancy Hold Preview](./docs/screenshots/discrepancy-sponge-hold.svg)
+#### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
+![Scenario B Discrepancy Hold](./docs/screenshots/discrepancy-sponge-hold.svg)
 
-### Gravimetric Blood Loss (EBL) Telemetry Panel
+#### Gravimetric Blood Loss (EBL) Telemetry Panel
 ![Gravimetric Blood Loss Telemetry](./docs/screenshots/gravimetric-ebl-telemetry.svg)
 
-### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
+#### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
 ![SHA-256 Audit Tamper Detection](./docs/screenshots/sha256-audit-tamper-detection.svg)
 
 ---

@@ -1,79 +1,109 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
   <defs>
     <linearGradient id="bgTamp" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#06080D"/>
-      <stop offset="100%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#0B0F17"/>
+      <stop offset="100%" stop-color="#080C14"/>
     </linearGradient>
+
+    <linearGradient id="cardGradTamp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95"/>
+    </linearGradient>
+
     <linearGradient id="tamperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#7F1D1D"/>
       <stop offset="100%" stop-color="#450A0A"/>
     </linearGradient>
+
     <filter id="glowT" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feGaussianBlur stdDeviation="6" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
 
-  <rect width="1000" height="500" fill="url(#bgTamp)"/>
+  <!-- Background -->
+  <rect width="800" height="480" fill="url(#bgTamp)"/>
 
-  <!-- Top Alert Banner -->
-  <g transform="translate(30, 25)">
-    <rect width="940" height="85" rx="14" fill="url(#tamperGrad)" stroke="#EF4444" stroke-width="2.5" filter="url(#glowT)"/>
-    <circle cx="50" cy="42" r="22" fill="#991B1B"/>
-    <path d="M 50 28 L 50 46 M 50 54 L 50 56" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
-    <text x="85" y="36" fill="#FCA5A5" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="2">CRYPTOGRAPHIC LEDGER INTEGRITY FAILURE &bull; FDA 21 CFR §11</text>
-    <text x="85" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="22" font-weight="black" letter-spacing="1">SECURITY ALERT: TAMPER DETECTED &bull; CHAIN BROKEN AT BLOCK #2</text>
-    <rect x="760" y="26" width="160" height="34" rx="8" fill="#991B1B" stroke="#F87171"/>
-    <text x="778" y="48" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold">INVALID AT #2</text>
+  <!-- Medical Grid Background -->
+  <g opacity="0.08">
+    <path d="M 0 40 L 800 40 M 0 80 L 800 80 M 0 120 L 800 120 M 0 160 L 800 160 M 0 200 L 800 200 M 0 240 L 800 240 M 0 280 L 800 280 M 0 320 L 800 320 M 0 360 L 800 360 M 0 400 L 800 400 M 0 440 L 800 440" stroke="#38BDF8" stroke-width="1"/>
+    <path d="M 40 0 L 40 480 M 80 0 L 80 480 M 120 0 L 120 480 M 160 0 L 160 480 M 200 0 L 200 480 M 240 0 L 240 480 M 280 0 L 280 480 M 320 0 L 320 480 M 360 0 L 360 480 M 400 0 L 400 480 M 440 0 L 440 480 M 480 0 L 480 480 M 520 0 L 520 480 M 560 0 L 560 480 M 600 0 L 600 480 M 640 0 L 640 480 M 680 0 L 680 480 M 720 0 L 720 480 M 760 0 L 760 480" stroke="#38BDF8" stroke-width="1"/>
   </g>
 
-  <!-- Merkle Block Sequence Explorer -->
-  <g transform="translate(30, 130)">
-    <rect width="940" height="340" rx="12" fill="#0F172A" stroke="#1E293B"/>
-    <rect x="15" y="15" width="910" height="28" rx="6" fill="#0B0F17"/>
-    <text x="25" y="34" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold">SHA-256 MERKLE BLOCKCHAIN SEQUENCE (TAMPER SIMULATION TEST)</text>
+  <!-- Top Alert Banner -->
+  <g transform="translate(20, 16)">
+    <rect width="760" height="66" rx="10" fill="url(#tamperGrad)" stroke="#EF4444" stroke-width="2" filter="url(#glowT)"/>
+    <circle cx="38" cy="33" r="16" fill="#991B1B"/>
+    <path d="M 38 23 L 38 35 M 38 41 L 38 43" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="64" y="27" fill="#FCA5A5" font-family="ui-monospace, monospace" font-size="9.5" font-weight="bold" letter-spacing="1.5">CRYPTOGRAPHIC LEDGER INTEGRITY FAILURE &bull; FDA 21 CFR §11</text>
+    <text x="64" y="49" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="16" font-weight="900" letter-spacing="0.5">SECURITY ALERT: TAMPER DETECTED &bull; CHAIN BROKEN AT BLOCK #2</text>
+    <rect x="625" y="16" width="118" height="32" rx="6" fill="#991B1B" stroke="#F87171"/>
+    <text x="639" y="36" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="10" font-weight="bold">INVALID AT #2</text>
+  </g>
+
+  <!-- Merkle Block Explorer Card -->
+  <g transform="translate(20, 92)">
+    <rect width="760" height="370" rx="12" fill="url(#cardGradTamp)" stroke="#1E293B" stroke-width="1"/>
+    <rect x="12" y="12" width="736" height="26" rx="5" fill="#0B0F17"/>
+    <text x="20" y="29" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10" font-weight="bold">SHA-256 MERKLE BLOCK SEQUENCE (MALICIOUS TAMPER SIMULATION)</text>
 
     <!-- Block 0: Genesis (Valid) -->
-    <g transform="translate(25, 60)">
-      <rect width="270" height="250" rx="10" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
-      <rect x="12" y="12" width="246" height="24" rx="4" fill="#064E3B"/>
-      <text x="20" y="28" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold">BLOCK #0 &bull; GENESIS [VALID]</text>
-      <text x="16" y="60" fill="#64748B" font-family="monospace" font-size="9">EVENT: GENESIS_INIT</text>
-      <text x="16" y="80" fill="#64748B" font-family="monospace" font-size="9">ACTOR: SYSTEM_KERNEL</text>
-      <text x="16" y="110" fill="#94A3B8" font-family="monospace" font-size="9">PREV HASH:</text>
-      <text x="16" y="125" fill="#64748B" font-family="monospace" font-size="8">00000000000000000000000000000000</text>
-      <text x="16" y="155" fill="#94A3B8" font-family="monospace" font-size="9">CURRENT SHA-256 HASH:</text>
-      <text x="16" y="170" fill="#34D399" font-family="monospace" font-size="8">a94f82c18402f1...b729e410</text>
-      <text x="16" y="205" fill="#6EE7B7" font-family="monospace" font-size="9">&bull; HASH MATCH VERIFIED</text>
+    <g transform="translate(20, 48)">
+      <rect width="225" height="295" rx="8" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="10" y="10" width="205" height="22" rx="4" fill="#064E3B"/>
+      <text x="16" y="25" fill="#34D399" font-family="ui-monospace, monospace" font-size="9" font-weight="bold">BLOCK #0 &bull; GENESIS [VALID]</text>
+      
+      <text x="12" y="55" fill="#64748B" font-family="ui-monospace, monospace" font-size="8.5">EVENT: GENESIS_INIT</text>
+      <text x="12" y="75" fill="#64748B" font-family="ui-monospace, monospace" font-size="8.5">ACTOR: SYSTEM_KERNEL</text>
+      
+      <text x="12" y="105" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="8.5">PREV HASH:</text>
+      <text x="12" y="120" fill="#64748B" font-family="ui-monospace, monospace" font-size="7.5">00000000000000000000000000000000</text>
+      
+      <text x="12" y="150" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="8.5">CURRENT SHA-256 HASH:</text>
+      <text x="12" y="165" fill="#34D399" font-family="ui-monospace, monospace" font-size="7.5">a94f82c18402f1...b729e410</text>
+      
+      <rect x="12" y="248" width="201" height="26" rx="4" fill="#064E3B"/>
+      <text x="20" y="265" fill="#6EE7B7" font-family="ui-monospace, monospace" font-size="8.5" font-weight="bold">&bull; HASH MATCH VERIFIED</text>
     </g>
 
     <!-- Block 1: Baseline (Valid) -->
-    <g transform="translate(325, 60)">
-      <rect width="270" height="250" rx="10" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
-      <rect x="12" y="12" width="246" height="24" rx="4" fill="#064E3B"/>
-      <text x="20" y="28" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold">BLOCK #1 &bull; BASELINE [VALID]</text>
-      <text x="16" y="60" fill="#64748B" font-family="monospace" font-size="9">EVENT: BASELINE_INIT (19 Items)</text>
-      <text x="16" y="80" fill="#64748B" font-family="monospace" font-size="9">ACTOR: SCRUB_NURSE_1</text>
-      <text x="16" y="110" fill="#94A3B8" font-family="monospace" font-size="9">PREV HASH:</text>
-      <text x="16" y="125" fill="#34D399" font-family="monospace" font-size="8">a94f82c18402f1...b729e410</text>
-      <text x="16" y="155" fill="#94A3B8" font-family="monospace" font-size="9">CURRENT SHA-256 HASH:</text>
-      <text x="16" y="170" fill="#34D399" font-family="monospace" font-size="8">718be9930f11ac...d41098ef</text>
-      <text x="16" y="205" fill="#6EE7B7" font-family="monospace" font-size="9">&bull; POINTER MATCH VERIFIED</text>
+    <g transform="translate(265, 48)">
+      <rect width="225" height="295" rx="8" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="10" y="10" width="205" height="22" rx="4" fill="#064E3B"/>
+      <text x="16" y="25" fill="#34D399" font-family="ui-monospace, monospace" font-size="9" font-weight="bold">BLOCK #1 &bull; BASELINE [VALID]</text>
+      
+      <text x="12" y="55" fill="#64748B" font-family="ui-monospace, monospace" font-size="8.5">EVENT: BASELINE_INIT</text>
+      <text x="12" y="75" fill="#64748B" font-family="ui-monospace, monospace" font-size="8.5">ACTOR: SCRUB_NURSE_1</text>
+      
+      <text x="12" y="105" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="8.5">PREV HASH:</text>
+      <text x="12" y="120" fill="#34D399" font-family="ui-monospace, monospace" font-size="7.5">a94f82c18402f1...b729e410</text>
+      
+      <text x="12" y="150" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="8.5">CURRENT SHA-256 HASH:</text>
+      <text x="12" y="165" fill="#34D399" font-family="ui-monospace, monospace" font-size="7.5">718be9930f11ac...d41098ef</text>
+      
+      <rect x="12" y="248" width="201" height="26" rx="4" fill="#064E3B"/>
+      <text x="20" y="265" fill="#6EE7B7" font-family="ui-monospace, monospace" font-size="8.5" font-weight="bold">&bull; POINTER MATCH VERIFIED</text>
     </g>
 
     <!-- Block 2: TAMPERED BLOCK (Broken!) -->
-    <g transform="translate(625, 60)">
-      <rect width="290" height="250" rx="10" fill="#450A0A" stroke="#EF4444" stroke-width="2.5"/>
-      <rect x="12" y="12" width="266" height="24" rx="4" fill="#7F1D1D"/>
-      <text x="20" y="28" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">BLOCK #2 &bull; TAMPER DETECTED!</text>
-      <text x="16" y="60" fill="#FCA5A5" font-family="monospace" font-size="9">EVENT: CAVITY_TRANSFER_IN</text>
-      <text x="16" y="80" fill="#FCA5A5" font-family="monospace" font-size="9">MUTATED PAYLOAD: { countForced: 999 }</text>
-      <text x="16" y="110" fill="#FFFFFF" font-family="monospace" font-size="9">EXPECTED HASH:</text>
-      <text x="16" y="125" fill="#FCA5A5" font-family="monospace" font-size="8">e3b0c44298fc1c...b855aa30</text>
-      <text x="16" y="155" fill="#FFFFFF" font-family="monospace" font-size="9">RECOMPUTED INTEGRITY HASH:</text>
-      <text x="16" y="170" fill="#EF4444" font-family="monospace" font-size="8">9941ac8201fa88...00192837</text>
-      <rect x="16" y="195" width="258" height="34" rx="6" fill="#7F1D1D"/>
-      <text x="26" y="216" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">&times; CRYPTOGRAPHIC MISMATCH</text>
+    <g transform="translate(510, 48)">
+      <rect width="230" height="295" rx="8" fill="#450A0A" stroke="#EF4444" stroke-width="2"/>
+      <rect x="10" y="10" width="210" height="22" rx="4" fill="#7F1D1D"/>
+      <text x="16" y="25" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="9" font-weight="bold">BLOCK #2 &bull; TAMPER DETECTED!</text>
+      
+      <text x="12" y="55" fill="#FCA5A5" font-family="ui-monospace, monospace" font-size="8.5">EVENT: CAVITY_TRANSFER_IN</text>
+      <text x="12" y="75" fill="#FCA5A5" font-family="ui-monospace, monospace" font-size="8">MUTATED: { countForced: 999 }</text>
+      
+      <text x="12" y="105" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="8.5">EXPECTED HASH:</text>
+      <text x="12" y="120" fill="#FCA5A5" font-family="ui-monospace, monospace" font-size="7.5">e3b0c44298fc1c...b855aa30</text>
+      
+      <text x="12" y="150" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="8.5">RECOMPUTED INTEGRITY HASH:</text>
+      <text x="12" y="165" fill="#EF4444" font-family="ui-monospace, monospace" font-size="7.5">9941ac8201fa88...00192837</text>
+      
+      <rect x="12" y="248" width="206" height="26" rx="4" fill="#7F1D1D"/>
+      <text x="20" y="265" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="8.5" font-weight="bold">&times; HASH MISMATCH DETECTED</text>
     </g>
   </g>
 </svg>
