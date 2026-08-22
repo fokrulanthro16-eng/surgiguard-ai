@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080D"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg2)"/>
+
+  <!-- Title -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="1080" height="50" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" filter="url(#glow2)"/>
+    <text x="24" y="32" fill="#38BDF8" font-family="monospace" font-size="15" font-weight="bold" letter-spacing="2">INTRA-OPERATIVE CLINICAL DATA FLOW PIPELINE &bull; SURGIGUARD AI v2.0</text>
+  </g>
+
+  <!-- Flow Steps (Horizontal Pipeline) -->
+  <!-- Step 1 -->
+  <g transform="translate(60, 120)">
+    <rect x="0" y="0" width="240" height="240" rx="14" fill="url(#stepGrad)" stroke="#06B6D4" stroke-width="1.5"/>
+    <rect x="12" y="12" width="216" height="26" rx="6" fill="#0B0F17"/>
+    <text x="20" y="30" fill="#06B6D4" font-family="monospace" font-size="11" font-weight="bold">STEP 1: SENSOR INGEST</text>
+
+    <text x="16" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; 4K Camera Optical Feed</text>
+    <text x="16" y="85" fill="#94A3B8" font-family="sans-serif" font-size="11">Mayo tray sterile zone</text>
+
+    <text x="16" y="115" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Tare Scale Telemetry</text>
+    <text x="16" y="135" fill="#94A3B8" font-family="sans-serif" font-size="11">Wet sponge weight (g)</text>
+
+    <text x="16" y="165" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Touchless Voice Mic</text>
+    <text x="16" y="185" fill="#94A3B8" font-family="sans-serif" font-size="11">Web Speech audio stream</text>
+
+    <text x="16" y="215" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Occlusion Guard</text>
+    <text x="16" y="230" fill="#94A3B8" font-family="sans-serif" font-size="11">Clarity &gt; 85% required</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(340, 120)">
+    <rect x="0" y="0" width="240" height="240" rx="14" fill="url(#stepGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect x="12" y="12" width="216" height="26" rx="6" fill="#0B0F17"/>
+    <text x="20" y="30" fill="#818CF8" font-family="monospace" font-size="11" font-weight="bold">STEP 2: GEMINI AI ARBITER</text>
+
+    <text x="16" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Bounding Box Generation</text>
+    <text x="16" y="85" fill="#94A3B8" font-family="sans-serif" font-size="11">Item coordinate mapping</text>
+
+    <text x="16" y="115" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Radiopaque Strip Scan</text>
+    <text x="16" y="135" fill="#94A3B8" font-family="sans-serif" font-size="11">X-ray marker validation</text>
+
+    <text x="16" y="165" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Spoken ATC Voice</text>
+    <text x="16" y="185" fill="#94A3B8" font-family="sans-serif" font-size="11">Natural audio OR briefing</text>
+
+    <text x="16" y="215" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Strict Zod Validation</text>
+    <text x="16" y="230" fill="#94A3B8" font-family="sans-serif" font-size="11">Zero schema exceptions</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(620, 120)">
+    <rect x="0" y="0" width="240" height="240" rx="14" fill="url(#stepGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect x="12" y="12" width="216" height="26" rx="6" fill="#0B0F17"/>
+    <text x="20" y="30" fill="#F59E0B" font-family="monospace" font-size="11" font-weight="bold">STEP 3: HUMAN INTERLOCK</text>
+
+    <text x="16" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Scrub Nurse Verification</text>
+    <text x="16" y="85" fill="#94A3B8" font-family="sans-serif" font-size="11">Accepts/Modifies proposal</text>
+
+    <text x="16" y="115" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Cavity Transfer Logging</text>
+    <text x="16" y="135" fill="#94A3B8" font-family="sans-serif" font-size="11">In-patient item tracking</text>
+
+    <text x="16" y="165" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Dynamic Pack Addition</text>
+    <text x="16" y="185" fill="#94A3B8" font-family="sans-serif" font-size="11">Baseline increment (+5, +10)</text>
+
+    <text x="16" y="215" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; WHO Sign-Out Gates</text>
+    <text x="16" y="230" fill="#94A3B8" font-family="sans-serif" font-size="11">Mandatory prerequisite</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g transform="translate(900, 120)">
+    <rect x="0" y="0" width="240" height="240" rx="14" fill="url(#stepGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="12" y="12" width="216" height="26" rx="6" fill="#0B0F17"/>
+    <text x="20" y="30" fill="#10B981" font-family="monospace" font-size="11" font-weight="bold">STEP 4: SOVEREIGN GATE</text>
+
+    <text x="16" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Pure Delta Calculation</text>
+    <text x="16" y="85" fill="#6EE7B7" font-family="monospace" font-size="11">&Delta; = Baseline - TrayOut</text>
+
+    <text x="16" y="115" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Cavity Invariant</text>
+    <text x="16" y="135" fill="#6EE7B7" font-family="monospace" font-size="11">CavityIn == 0</text>
+
+    <text x="16" y="165" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Closure Release [GO]</text>
+    <text x="16" y="185" fill="#34D399" font-family="sans-serif" font-size="11">Emerald confirmation</text>
+
+    <text x="16" y="215" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">&bull; Discrepancy Hold [HOLD]</text>
+    <text x="16" y="230" fill="#F87171" font-family="sans-serif" font-size="11">Automated safety lock</text>
+  </g>
+
+  <!-- Step 5: Lower Interoperability Span -->
+  <g transform="translate(60, 400)">
+    <rect x="0" y="0" width="1080" height="220" rx="16" fill="url(#stepGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect x="16" y="16" width="1048" height="28" rx="6" fill="#0B0F17"/>
+    <text x="28" y="35" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold">STEP 5: CRYPTOGRAPHIC COMMIT &amp; FHIR R4 ELECTRONIC HEALTH RECORD SYNC</text>
+
+    <g transform="translate(24, 60)">
+      <rect x="0" y="0" width="500" height="135" rx="10" fill="#0B0F17" stroke="#1E293B"/>
+      <text x="16" y="28" fill="#38BDF8" font-family="sans-serif" font-size="13" font-weight="bold">Immutable SHA-256 Merkle Ledger (FDA 21 CFR §11)</text>
+      <text x="16" y="55" fill="#94A3B8" font-family="sans-serif" font-size="11">Every baseline initialization, pack addition, tray update, and gate evaluation creates a cryptographic block linking to the previous hash.</text>
+      <text x="16" y="85" fill="#10B981" font-family="monospace" font-size="10">&bull; Tamper Detection: Detects corrupted payloads within 1 millisecond.</text>
+      <text x="16" y="105" fill="#10B981" font-family="monospace" font-size="10">&bull; Regulatory Audit Export: JSON &amp; Cryptographic Certificate.</text>
+    </g>
+
+    <g transform="translate(554, 60)">
+      <rect x="0" y="0" width="500" height="135" rx="10" fill="#0B0F17" stroke="#1E293B"/>
+      <text x="16" y="28" fill="#A855F7" font-family="sans-serif" font-size="13" font-weight="bold">HL7 FHIR R4 Standard Document Transaction</text>
+      <text x="16" y="55" fill="#94A3B8" font-family="sans-serif" font-size="11">Generates complete clinical documentation ready for hospital EHR ingest:</text>
+      <text x="16" y="85" fill="#C084FC" font-family="monospace" font-size="10">&bull; LOINC 80347-8: Surgical Item Count Panel (Baseline, Cavity, Tray, Delta)</text>
+      <text x="16" y="105" fill="#C084FC" font-family="monospace" font-size="10">&bull; LOINC 55284-4: Gravimetric Sponge Blood Loss (mL)</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 300 240 L 335 240" fill="none" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 580 240 L 615 240" fill="none" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 860 240 L 895 240" fill="none" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 1020 360 L 1020 395" fill="none" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

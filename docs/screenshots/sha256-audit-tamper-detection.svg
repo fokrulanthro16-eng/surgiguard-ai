@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgTamp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080D"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="tamperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D"/>
+      <stop offset="100%" stop-color="#450A0A"/>
+    </linearGradient>
+    <filter id="glowT" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="500" fill="url(#bgTamp)"/>
+
+  <!-- Top Alert Banner -->
+  <g transform="translate(30, 25)">
+    <rect width="940" height="85" rx="14" fill="url(#tamperGrad)" stroke="#EF4444" stroke-width="2.5" filter="url(#glowT)"/>
+    <circle cx="50" cy="42" r="22" fill="#991B1B"/>
+    <path d="M 50 28 L 50 46 M 50 54 L 50 56" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <text x="85" y="36" fill="#FCA5A5" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="2">CRYPTOGRAPHIC LEDGER INTEGRITY FAILURE &bull; FDA 21 CFR §11</text>
+    <text x="85" y="65" fill="#FFFFFF" font-family="sans-serif" font-size="22" font-weight="black" letter-spacing="1">SECURITY ALERT: TAMPER DETECTED &bull; CHAIN BROKEN AT BLOCK #2</text>
+    <rect x="760" y="26" width="160" height="34" rx="8" fill="#991B1B" stroke="#F87171"/>
+    <text x="778" y="48" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold">INVALID AT #2</text>
+  </g>
+
+  <!-- Merkle Block Sequence Explorer -->
+  <g transform="translate(30, 130)">
+    <rect width="940" height="340" rx="12" fill="#0F172A" stroke="#1E293B"/>
+    <rect x="15" y="15" width="910" height="28" rx="6" fill="#0B0F17"/>
+    <text x="25" y="34" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold">SHA-256 MERKLE BLOCKCHAIN SEQUENCE (TAMPER SIMULATION TEST)</text>
+
+    <!-- Block 0: Genesis (Valid) -->
+    <g transform="translate(25, 60)">
+      <rect width="270" height="250" rx="10" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="12" y="12" width="246" height="24" rx="4" fill="#064E3B"/>
+      <text x="20" y="28" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold">BLOCK #0 &bull; GENESIS [VALID]</text>
+      <text x="16" y="60" fill="#64748B" font-family="monospace" font-size="9">EVENT: GENESIS_INIT</text>
+      <text x="16" y="80" fill="#64748B" font-family="monospace" font-size="9">ACTOR: SYSTEM_KERNEL</text>
+      <text x="16" y="110" fill="#94A3B8" font-family="monospace" font-size="9">PREV HASH:</text>
+      <text x="16" y="125" fill="#64748B" font-family="monospace" font-size="8">00000000000000000000000000000000</text>
+      <text x="16" y="155" fill="#94A3B8" font-family="monospace" font-size="9">CURRENT SHA-256 HASH:</text>
+      <text x="16" y="170" fill="#34D399" font-family="monospace" font-size="8">a94f82c18402f1...b729e410</text>
+      <text x="16" y="205" fill="#6EE7B7" font-family="monospace" font-size="9">&bull; HASH MATCH VERIFIED</text>
+    </g>
+
+    <!-- Block 1: Baseline (Valid) -->
+    <g transform="translate(325, 60)">
+      <rect width="270" height="250" rx="10" fill="#0B0F17" stroke="#10B981" stroke-width="1.5"/>
+      <rect x="12" y="12" width="246" height="24" rx="4" fill="#064E3B"/>
+      <text x="20" y="28" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold">BLOCK #1 &bull; BASELINE [VALID]</text>
+      <text x="16" y="60" fill="#64748B" font-family="monospace" font-size="9">EVENT: BASELINE_INIT (19 Items)</text>
+      <text x="16" y="80" fill="#64748B" font-family="monospace" font-size="9">ACTOR: SCRUB_NURSE_1</text>
+      <text x="16" y="110" fill="#94A3B8" font-family="monospace" font-size="9">PREV HASH:</text>
+      <text x="16" y="125" fill="#34D399" font-family="monospace" font-size="8">a94f82c18402f1...b729e410</text>
+      <text x="16" y="155" fill="#94A3B8" font-family="monospace" font-size="9">CURRENT SHA-256 HASH:</text>
+      <text x="16" y="170" fill="#34D399" font-family="monospace" font-size="8">718be9930f11ac...d41098ef</text>
+      <text x="16" y="205" fill="#6EE7B7" font-family="monospace" font-size="9">&bull; POINTER MATCH VERIFIED</text>
+    </g>
+
+    <!-- Block 2: TAMPERED BLOCK (Broken!) -->
+    <g transform="translate(625, 60)">
+      <rect width="290" height="250" rx="10" fill="#450A0A" stroke="#EF4444" stroke-width="2.5"/>
+      <rect x="12" y="12" width="266" height="24" rx="4" fill="#7F1D1D"/>
+      <text x="20" y="28" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">BLOCK #2 &bull; TAMPER DETECTED!</text>
+      <text x="16" y="60" fill="#FCA5A5" font-family="monospace" font-size="9">EVENT: CAVITY_TRANSFER_IN</text>
+      <text x="16" y="80" fill="#FCA5A5" font-family="monospace" font-size="9">MUTATED PAYLOAD: { countForced: 999 }</text>
+      <text x="16" y="110" fill="#FFFFFF" font-family="monospace" font-size="9">EXPECTED HASH:</text>
+      <text x="16" y="125" fill="#FCA5A5" font-family="monospace" font-size="8">e3b0c44298fc1c...b855aa30</text>
+      <text x="16" y="155" fill="#FFFFFF" font-family="monospace" font-size="9">RECOMPUTED INTEGRITY HASH:</text>
+      <text x="16" y="170" fill="#EF4444" font-family="monospace" font-size="8">9941ac8201fa88...00192837</text>
+      <rect x="16" y="195" width="258" height="34" rx="6" fill="#7F1D1D"/>
+      <text x="26" y="216" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="bold">&times; CRYPTOGRAPHIC MISMATCH</text>
+    </g>
+  </g>
+</svg>

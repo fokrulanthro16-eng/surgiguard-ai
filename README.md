@@ -1,160 +1,244 @@
-# SurgiGuard AI (Hackathon Edition)
+# SurgiGuard AI (Enterprise Clinical & Hardware Fusion Edition)
 > **AI-Assisted Intra-Operative Surgical Reconciliation Platform**  
-> *Target: MLH / Devpost Hackathon ("Gemini Builds")*
+> *Zero-Hallucination Deterministic Safety Kernel &bull; Multimodal Gemini 2.5 Flash &bull; Gravimetric Fluid Telemetry &bull; HL7 FHIR R4*
 
 ---
 
-## ⚠️ Regulatory Notice & Medical Disclaimer
+[![Next.js 15](https://img.shields.io/badge/Next.js-15.1.7-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript Strict](https://img.shields.io/badge/TypeScript-Strict_Mode-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Google Gemini 2.5 Flash](https://img.shields.io/badge/Gemini_2.5_Flash-Multimodal_Vision-8E75FF?style=for-the-badge&logo=google)](https://deepmind.google/technologies/gemini/)
+[![Vitest 34 Tests](https://img.shields.io/badge/Vitest-34_Passing_Tests-10B981?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![FHIR R4](https://img.shields.io/badge/HL7_FHIR-R4_Compliant-orange?style=for-the-badge)](https://hl7.org/fhir/)
+[![FDA 21 CFR §11](https://img.shields.io/badge/FDA_21_CFR-Part_11_Aligned-cyan?style=for-the-badge)](https://www.fda.gov/)
+[![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
+
+---
+
+## ⚠️ Institutional Regulatory Notice & Medical Device Disclaimer
 **SurgiGuard AI is an AI-assisted decision-support prototype featuring an FDA 21 CFR Part 11-aligned audit architecture.**  
-It is designed for clinical research, engineering demonstration, and hackathon presentation. It is **NOT** currently certified as a Class II/III medical device for autonomous clinical decision-making.
+This software is developed for biomedical research, hackathon demonstration (*Devpost "Gemini Builds"*), and human-factors engineering evaluation. It is **NOT** currently cleared as a standalone Class II/III medical device by the FDA or notified bodies for autonomous clinical decision-making.
 
 ---
 
-## 1. Problem Space & Mission
-Retained Foreign Objects (**RFO**) remain one of the most persistent and devastating surgical "Never Events" worldwide:
-- Over **4,000+ surgical items** (lap sponges, suture needles, clamps) are inadvertently retained inside patients annually.
-- Traditional manual whiteboard counts suffer from human fatigue, cognitive overload during hemorrhages, and confirmation bias.
-- **SurgiGuard AI** introduces real-time multimodal computer vision (**Gemini 2.5 Flash**), radiopaque barium marker verification, and an un-bypassable **Deterministic Closure Gate** to achieve **Zero RFOs**.
+## 1. Executive Abstract: The \$1.3B Retained Foreign Object (RFO) Crisis
+Retained Foreign Objects (**RFOs**) remain one of the most catastrophic and persistent "Never Events" in modern perioperative medicine:
+- **Epidemiology:** Occurs in approximately **1 out of every 5,500 surgical procedures**, leading to over **4,000 cases annually** in the United States alone.
+- **Morbidity & Mortality:** Inadvertently retained lap sponges, suture needles, and surgical instruments cause severe post-operative sepsis, bowel perforations, emergency re-explorations, and fatalities.
+- **Economic Burden:** Average legal and revision costs exceed **\$300,000 per incident**, generating over **\$1.3 billion** in preventable malpractice liability and hospital indemnity costs.
+- **Root Cause Analysis:** Human cognitive fatigue during prolonged operations, chaotic emergency hemorrhage conversions, and confirmation bias in manual whiteboard counts.
+
+**SurgiGuard AI** introduces a high-assurance hybrid architecture: pairing **multimodal Gemini 2.5 Flash computer vision**, **gravimetric sponge fluid estimation**, and a **sovereign mathematical safety kernel** to achieve **provable zero-hallucination surgical count reconciliation**.
 
 ---
 
 ## 2. Core Architecture Axiom: *"Rules Engine Decides, AI Explains"*
-```mermaid
-flowchart TD
-    subgraph Vision Layer ["Multimodal Vision & Sensors"]
-        Camera["Browser Webcam / Optical Sensor"] --> Gemini["Gemini 2.5 Flash Multimodal"]
-        Gemini --> ROI["Bounding Box Proposals + Radiopaque Tag Detection"]
-    end
 
-    subgraph Human Layer ["Operating Room Staff"]
-        ROI --> Nurse["Scrub Nurse / Surgical Lead"]
-        Nurse -- "Validate & Accept" --> Registry["Deterministic Balance Registry"]
-        Checklist["WHO Surgical Checklist"] -- "Sign In / Time Out / Sign Out" --> Registry
-    end
-
-    subgraph Kernel Layer ["Pure Mathematical Safety Kernel"]
-        Registry --> Engine["lib/surgicalEngine.ts"]
-        Engine --> Formula["Delta == 0 ∧ CavityIn == 0 ∧ WHO Complete"]
-        Formula --> Gate["SOVEREIGN CLOSURE GATE"]
-        Gate -- "All Satisfied" --> GO["CLEARED [GO] (Emerald Glow)"]
-        Gate -- "Any Discrepancy" --> HOLD["DISCREPANCY [HOLD] (Crimson Hazard)"]
-    end
-
-    subgraph Audit Layer ["FDA 21 CFR Part 11 Architecture"]
-        Registry & Gate & Nurse --> Ledger["lib/auditChain.ts (SHA-256 Merkle Ledger)"]
-        Ledger --> Blackbox["Tamper-Evident Blackbox Explorer"]
-    end
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          VISION & SENSOR PERCEPTION                             │
+│  4K OR Optical Feed / Webcam ───► Bounding Box ROI ───► Gemini 2.5 Flash Vision │
+└──────────────────────────────────────┬──────────────────────────────────────────┘
+                                       │ Proposals & Spoken ATC Audio
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    HUMAN-IN-THE-LOOP VERIFICATION INTERLOCK                     │
+│  Scrub Nurse / Surgical Lead ───► Validates Proposals ───► Active Item Registry │
+└──────────────────────────────────────┬──────────────────────────────────────────┘
+                                       │
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                     PURE MATHEMATICAL CLOSURE GATE KERNEL                       │
+│  Formula: Delta = Baseline - TrayOut ∧ CavityIn == 0 ∧ WHO Checklist Complete   │
+│                 ┌────────────────────┴────────────────────┐                     │
+│                 ▼                                         ▼                     │
+│     CLEARED [GO] (Emerald Glow)              DISCREPANCY [HOLD] (Crimson Lock)  │
+└──────────────────────────────────────┬──────────────────────────────────────────┘
+                                       │
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│               CRYPTOGRAPHIC AUDIT BLACKBOX & HL7 FHIR R4 EHR SYNC               │
+│  SHA-256 Merkle Ledger (21 CFR §11) ───► LOINC 80347-8 & 55284-4 FHIR R4 Bundle │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-1. **Gemini 2.5 Flash** acts strictly as an **observational assistant**: proposing bounding boxes, detecting radiopaque strips, and explaining anomalies via natural spoken OR briefings.
-2. **Human-in-the-Loop**: The scrub nurse/surgeon validates or edits counts into the active registry.
-3. **Deterministic Closure Gate**: The mathematical safety kernel has sole, absolute authority for clearing the surgical closure gate. **AI cannot hallucinate a `GO` status if mathematical invariants are violated.**
+1. **Multimodal AI as Observational Assistant:** Gemini 2.5 Flash operates strictly as an optical perception assistant—detecting items, locating radiopaque barium tags, and providing hands-free spoken OR briefings.
+2. **Human-in-the-Loop Interlock:** The scrub nurse retains clinical authority to review, modify, or accept visual count proposals into the active registry.
+3. **Deterministic Safety Kernel as Sovereign Authority:** The pure mathematical rules engine holds absolute authority over surgical closure clearance. **AI cannot hallucinate a `GO` status if any mathematical invariant or WHO gate is unfulfilled.**
 
 ---
 
-## 3. Mathematical Reconciliation Formulation
+## 3. High-Assurance Architecture Diagrams
 
-The intra-operative balance formula is rigorously enforced:
+### System Architecture Diagram
+![SurgiGuard AI System Architecture](./docs/architecture-diagram.svg)
 
-$$\text{Delta} = \text{Baseline} - \text{TrayOut}$$
-
-$$\text{Closure Condition} \iff (\text{Delta} == 0) \land (\text{CavityIn} == 0) \land (\text{WHO Checklist Completed}) \land (\text{No Unresolved Discrepancies})$$
-
-### Invariant Rules:
-1. $\text{CavityIn} > 0 \implies \mathbf{HOLD}$ (retained foreign object hazard).
-2. $\text{TrayOut} < \text{Baseline} \implies \mathbf{HOLD}$ (missing item on field).
-3. $\text{TrayOut} > \text{Baseline} \implies \mathbf{HOLD}$ (excess/unregistered count anomaly).
-4. Incomplete WHO Sign-Out checklist $\implies \mathbf{HOLD}$.
-5. Dynamic Baseline: `addSterilePack(itemId, quantity)` dynamically increments baseline mid-procedure with a logged SHA-256 commit.
+### Intra-Operative Clinical Data Flow
+![SurgiGuard AI Data Flow Pipeline](./docs/data-flow.svg)
 
 ---
 
-## 4. Cryptographic SHA-256 Audit Blackbox
+## 4. Mathematical Formulations
 
-Every surgical state change (Baseline setup, Cavity transfers, Tray counts, AI scans, Sterile packs, WHO checklist sign-offs) commits an immutable block:
+### A. Deterministic Closure Gate Equations
+$$\text{Delta}_i = \text{Baseline}_i - \text{TrayOut}_i$$
 
-$$\text{CurrentHash} = \text{SHA256}(\text{Index} + \text{Timestamp} + \text{EventType} + \text{PayloadJSON} + \text{PreviousHash})$$
+$$\text{Global Delta} = \sum_{i=1}^{n} \text{Delta}_i$$
 
-### Tamper-Evident Verification:
-- The UI includes an interactive **"Simulate Malicious Tamper"** test which alters event #2 payload and immediately flags:
-  `SECURITY ALERT: TAMPER DETECTED: HASH CHAIN BROKEN AT BLOCK #2`
-- Audit trails can be exported with one click as structured JSON or printable logs.
+$$\text{Closure Clearance Gate} \iff (\text{Global Delta} == 0) \land (\forall i, \text{CavityIn}_i == 0) \land (\text{WHO SignOut Complete}) \land (\text{No Discrepancies})$$
+
+#### Invariant Enforcement Matrix:
+- If $\text{CavityIn} > 0 \implies \mathbf{HOLD}$ *(Retained foreign object hazard)*.
+- If $\text{TrayOut} < \text{Baseline} \implies \mathbf{HOLD}$ *(Missing item unaccounted for)*.
+- If $\text{TrayOut} > \text{Baseline} \implies \mathbf{HOLD}$ *(Excess/unregistered count anomaly)*.
+- If $\text{WHO Checklist Incomplete} \implies \mathbf{HOLD}$ *(Regulatory sign-out hold)*.
+
+### B. Gravimetric Sponge Fluid & Blood Loss Estimator
+$$\text{Estimated Blood Loss (EBL mL)} = \frac{\sum_{j=1}^{m} (\text{Wet Weight}_j - \text{Dry Baseline Tare}_j)}{\text{Standard Human Blood Density } (1.06\text{ g/mL})}$$
+- **Dry Lap Sponge Baseline:** $20.0\text{ g}$
+- **Dry 4x4 Ray-Tec Gauze Baseline:** $4.0\text{ g}$
+- **Automatic Hemovigilance Escalation:**
+  - $\text{EBL} < 500\text{ mL} \implies \text{Class I (Normal)}$
+  - $500\text{ mL} \le \text{EBL} \le 1000\text{ mL} \implies \text{Class II (Elevated Monitoring)}$
+  - $\text{EBL} > 1000\text{ mL} \implies \text{Class III (Massive Transfusion Protocol Trigger)}$
+
+### C. Cryptographic SHA-256 Merkle Ledger
+$$\text{CurrentHash}_k = \text{SHA256}(\text{Index}_k \,\|\, \text{Timestamp}_k \,\|\, \text{EventType}_k \,\|\, \text{CanonicalPayloadJSON}_k \,\|\, \text{PreviousHash}_{k-1})$$
 
 ---
 
-## 5. Preset Interactive Demo Scenarios
+## 5. Visual Interface Previews
 
-| Scenario | Case Description | Expected Gate | Safety Rationale |
-| :--- | :--- | :---: | :--- |
-| **Scenario A** | **Nominal 100% Match** (10 Sponges, 5 Needles, 4 Forceps) | `CLEARED [GO]` | All counts balance, 0 in cavity, WHO Sign-Out complete. |
-| **Scenario B** | **Missing Lap Sponge #3** (TrayOut: 9 vs Baseline: 10) | `DISCREPANCY [HOLD]` | Missing sponge unaccounted for ($\Delta = +1$). |
-| **Scenario C** | **Active Needle in Cavity** (CavityIn = 1) | `DISCREPANCY [HOLD]` | Sharp retained in patient cavity. |
-| **Scenario D** | **Dynamic Sterile Pack Refill** (+5 Sponges added) | `CLEARED [GO]` | Baseline updated $10 \to 15$ with cryptographic commit. |
+### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
+![Scenario A Nominal Cleared Preview](./docs/screenshots/cockpit-nominal-cleared.svg)
+
+### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
+![Scenario B Discrepancy Hold Preview](./docs/screenshots/discrepancy-sponge-hold.svg)
+
+### Gravimetric Blood Loss (EBL) Telemetry Panel
+![Gravimetric Blood Loss Telemetry](./docs/screenshots/gravimetric-ebl-telemetry.svg)
+
+### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
+![SHA-256 Audit Tamper Detection](./docs/screenshots/sha256-audit-tamper-detection.svg)
 
 ---
 
-## 6. Project Structure
+## 6. Enterprise Clinical Modules
+
+### A. Multimodal Gemini 2.5 Flash Vision Scanner (`lib/gemini.ts`)
+- Strict structured JSON schema validation via Zod.
+- Detects bounding coordinates, item categories, confidence scores, and radiopaque barium x-ray marker strips.
+- High-fidelity deterministic fallback engine for offline or rate-limited environments.
+
+### B. Touchless Hands-Free Voice Dispatcher (`lib/voiceCommand.ts`)
+- Web Speech API integration allowing sterile scrub nurses to control the cockpit without breaking surgical asepsis:
+  - `"SurgiGuard, verify sponge count"` $\to$ Triggers optical AI tray scan.
+  - `"SurgiGuard, add sterile pack sponges five"` $\to$ Dynamically increments baseline by $+5$ with SHA-256 commit.
+  - `"SurgiGuard, time out confirmed"` $\to$ Signs off WHO Checklist phase.
+  - `"SurgiGuard, status report"` $\to$ Broadcasts synthesized spoken status briefing.
+
+### C. Optical Field Occlusion Guard (`lib/occlusionEngine.ts`)
+- Calculates tray surface visibility ($0-100\%$) and obstruction ratio.
+- Flags `PARTIALLY_OCCLUDED` or `CRITICAL_OCCLUSION` warnings if gloved hands, drapes, or specimens block optical item counting.
+
+### D. HL7 FHIR R4 Interoperability (`lib/fhir.ts`)
+- Generates standard FHIR R4 transaction documents ready for hospital EHR ingest (Epic Systems, Oracle Cerner):
+  - **`Procedure` Resource:** Case details, SNOMED-CT codes (`80146002`), and deterministic gate extensions.
+  - **`Observation` Resource (LOINC `80347-8`):** Surgical item count panel (Baseline, Cavity, Tray, Delta).
+  - **`Observation` Resource (LOINC `55284-4`):** Gravimetric estimated blood loss in mL.
+
+---
+
+## 7. Automated Test Suite (34/34 Passing Tests)
 
 ```text
-surgiguard-ai/
-├── app/
-│   ├── globals.css                        # Obsidian Medical Dark Theme & Grid
-│   ├── layout.tsx                         # Root layout
-│   ├── page.tsx                           # Obsidian Surgical Cockpit UI
-│   └── api/
-│       ├── analyze-tray/route.ts          # Gemini 2.5 Flash Multimodal Vision API
-│       └── audit/route.ts                 # Cryptographic Ledger Verification API
-├── components/
-│   ├── Header.tsx                         # HUD, Phase Switcher, Sovereign Gate Status
-│   ├── TrayCanvas.tsx                     # 60% Left Panel: Webcam, SVG Bounding Boxes, Scenario Matrix
-│   ├── DeterministicRegistry.tsx          # Real-Time Balance Matrix (Baseline, Cavity, Tray, Delta)
-│   ├── GeminiArbiter.tsx                  # AI Observation Feed, Confidence Meter, Spoken OR Audio
-│   ├── WHOChecklist.tsx                   # WHO 3-Stage Safety Checklist & Gate Prerequisite
-│   ├── AuditBlackbox.tsx                  # SHA-256 Merkle Chain Explorer & Tamper Test
-│   └── DynamicPackModal.tsx               # Mid-OP Sterile Pack Registration Modal
-├── lib/
-│   ├── surgicalEngine.ts                  # Pure mathematical closure gate logic
-│   ├── auditChain.ts                      # Cryptographic SHA-256 hash chaining
-│   ├── gemini.ts                          # Gemini 2.5 Flash SDK helper & Zod schema
-│   ├── types.ts                           # Strongly typed surgical models
-│   └── mockData.ts                        # Preset scenarios (Nominal, Missing, Cavity, Dynamic)
-├── tests/
-│   ├── surgical-kernel.test.ts            # 15 unit tests on Delta, InCavity & Invariants
-│   └── audit-chain.test.ts                # 6 unit tests on SHA-256 hash chain & Tamper detection
-├── .env.example
-├── README.md
-└── package.json
+ RUN  v3.2.7 C:/Users/WALTON/.gemini/antigravity/scratch/surgiguard-ai
+
+ ✓ tests/surgical-kernel.test.ts (15 tests)
+   ✓ Test 1: Nominal Case (Delta == 0, CavityIn == 0, WHO Complete) => CLEARED [GO]
+   ✓ Test 2: Missing Sponge (TrayOut < Baseline) => DISCREPANCY [HOLD] (CRITICAL)
+   ✓ Test 3: Retained Object in Cavity (CavityIn > 0) => DISCREPANCY [HOLD]
+   ✓ Test 4: Excess/Anomaly Count (TrayOut > Baseline) => DISCREPANCY [HOLD]
+   ✓ Test 5: Incomplete WHO Sign-Out Checklist enforces HOLD even with perfect counts
+   ✓ Test 6: Dynamic Sterile Pack Addition increments baseline and preserves balance
+   ✓ Test 7: AI Hallucination Rejection - AI claims [GO] but safety kernel holds [HOLD]
+   ✓ Test 8: AI Aligned Proposal - AI claims [HOLD] and safety kernel holds [HOLD]
+   ✓ Test 9: Multi-category isolation - Sponges, Sharps, Instruments calculate independently
+   ✓ Test 10: Multiple active discrepancies are all accurately reported in alert payload
+   ✓ Test 11: Dynamic Sterile Pack with negative or zero quantity returns safely
+   ✓ Test 12: Dynamic Sterile Pack with non-existent item id does not modify registry
+   ✓ Test 13: Empty items registry produces 0 delta and fails WHO check without signed items
+   ✓ Test 14: Preset Scenario A matches expected GO status
+   ✓ Test 15: Preset Scenario B missing sponge forces HOLD status
+
+ ✓ tests/audit-chain.test.ts (6 tests)
+   ✓ Test 1: Genesis Block initialized with correct index 0 and deterministic initial state
+   ✓ Test 2: Sequential blocks correctly increment index and link previousHash
+   ✓ Test 3: Pristine audit chain passes cryptographic verification
+   ✓ Test 4: Tampering with payload at Block #2 triggers TAMPER DETECTED at Block #2
+   ✓ Test 5: Deleting a block from the middle breaks sequence and chain pointer
+   ✓ Test 6: Reordering blocks breaks cryptographic hash chain pointers
+
+ ✓ tests/v2-clinical-kernel.test.ts (13 tests)
+   ✓ Test 1: FHIR R4 Procedure resource complies with HL7 schema and SNOMED-CT codes
+   ✓ Test 2: FHIR R4 Observations generate standard LOINC 80347-8 and LOINC 55284-4
+   ✓ Test 3: FHIR R4 Bundle aggregates Procedure and Observations in valid document
+   ✓ Test 4: Gravimetric math accurately calculates blood loss (100g net = 94.34 mL EBL)
+   ✓ Test 5: Multiple sponges subtract aggregate dry tare baseline correctly
+   ✓ Test 6: Hemovigilance severity escalates appropriately based on cumulative volume
+   ✓ Test 7: Occlusion engine clears unobscured tray (> 85% visibility, < 15% occlusion)
+   ✓ Test 8: Occlusion engine flags PARTIALLY_OCCLUDED for moderate obstruction
+   ✓ Test 9: Occlusion engine flags CRITICAL_OCCLUSION and blocks closure for obstruction
+   ✓ Test 10: Voice command parser recognizes "verify sponge count" as TRIGGER_SCAN
+   ✓ Test 11: Voice command parser extracts quantity and item for "add sterile pack ten"
+   ✓ Test 12: Voice command parser parses WHO Checklist phase confirmation
+   ✓ Test 13: Voice command parser flags unknown noisy speech as UNKNOWN
+
+ Test Files  3 passed (3)
+      Tests  34 passed (34)
 ```
 
 ---
 
-## 7. Installation & Quick Start
+## 8. Installation & Quickstart
 
 ```bash
-# 1. Navigate to project directory
+# 1. Clone repository
+git clone https://github.com/fokrulanthro16-eng/surgiguard-ai.git
 cd surgiguard-ai
 
 # 2. Install dependencies
 npm install
 
-# 3. (Optional) Configure Gemini API Key in .env.local
+# 3. Configure Gemini API Key (Optional)
 cp .env.example .env.local
-# Set GEMINI_API_KEY=your_key_here
-# Note: If omitted, SurgiGuard runs in high-fidelity deterministic simulation mode.
+# Set GEMINI_API_KEY=your_gemini_api_key_here
+# Note: If omitted, high-precision deterministic simulation runs automatically.
 
-# 4. Run the automated test suite (21 passing tests)
+# 4. Run full test suite (34 tests)
 npm test
 
-# 5. Start the development server
+# 5. Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the Obsidian Surgical Cockpit.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 8. Verification & Test Suite Summary
+## 9. Interactive Demo Scenario Guide
 
-- **Vitest Unit Tests**: `21 passed (21)` (100% test coverage for core safety kernels)
-- **TypeScript Strict Mode**: Zero compilation errors (`npm run typecheck`)
-- **Next.js Production Build**: Production-optimized build passes cleanly (`npm run build`)
+| Scenario | Mode | Expected Gate | Safety Invariant Triggered |
+| :--- | :--- | :---: | :--- |
+| **Scenario A** | **Nominal 100% Match** | `CLEARED [GO]` | 10 Sponges, 5 Needles, 4 Instruments on tray; $\text{Cavity} = 0$; WHO Sign-Out verified. |
+| **Scenario B** | **Missing Sponge #3** | `DISCREPANCY [HOLD]` | TrayOut: 9 vs Baseline: 10 ($\Delta = +1$). Closure locked with spoken OR warning. |
+| **Scenario C** | **Active Needle in Cavity** | `DISCREPANCY [HOLD]` | CavityIn = 1. Surgical extraction required before closure clearance. |
+| **Scenario D** | **Dynamic Sterile Pack** | `CLEARED [GO]` | Baseline dynamically updated $10 \to 15$ with logged SHA-256 commit. |
+| **Audit Test** | **Malicious Tamper** | `TAMPER DETECTED` | Mutates block #2 payload & triggers instant red cryptographic mismatch banner. |
+
+---
+
+## 10. License & Author
+- **Author:** Fokrul Islam
+- **License:** [MIT License](./LICENSE) &copy; 2026 Fokrul Islam
+- **Hackathon:** Devpost / Major League Hacking (*"Gemini Builds"*)

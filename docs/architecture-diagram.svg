@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080D"/>
+      <stop offset="50%" stop-color="#0B0F17"/>
+      <stop offset="100%" stop-color="#070A10"/>
+    </linearGradient>
+
+    <!-- Glassy Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312E81" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1E1B4B" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="kernelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#022C22" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="hazardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#450A0A" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowEmerald" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Marker Arrow -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#06B6D4"/>
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10B981"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#A855F7"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="720" fill="url(#bgGrad)"/>
+
+  <!-- Medical Grid Background Overlay -->
+  <g opacity="0.12">
+    <path d="M 0 60 L 1200 60 M 0 120 L 1200 120 M 0 180 L 1200 180 M 0 240 L 1200 240 M 0 300 L 1200 300 M 0 360 L 1200 360 M 0 420 L 1200 420 M 0 480 L 1200 480 M 0 540 L 1200 540 M 0 600 L 1200 600 M 0 660 L 1200 660" stroke="#38BDF8" stroke-width="1"/>
+    <path d="M 60 0 L 60 720 M 120 0 L 120 720 M 180 0 L 180 720 M 240 0 L 240 720 M 300 0 L 300 720 M 360 0 L 360 720 M 420 0 L 420 720 M 480 0 L 480 720 M 540 0 L 540 720 M 600 0 L 600 720 M 660 0 L 660 720 M 720 0 L 720 720 M 780 0 L 780 720 M 840 0 L 840 720 M 900 0 L 900 720 M 960 0 L 960 720 M 1020 0 L 1020 720 M 1080 0 L 1080 720 M 1140 0 L 1140 720" stroke="#38BDF8" stroke-width="1"/>
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="1080" height="56" rx="12" fill="#0F172A" stroke="#06B6D4" stroke-width="1.5" filter="url(#glowCyan)" fill-opacity="0.8"/>
+    <text x="24" y="34" fill="#38BDF8" font-family="monospace" font-size="16" font-weight="bold" letter-spacing="2">SURGIGUARD AI v2.0 // ENTERPRISE HIGH-ASSURANCE SYSTEM ARCHITECTURE</text>
+    <text x="820" y="34" fill="#10B981" font-family="monospace" font-size="12" font-weight="bold">FDA 21 CFR §11 &bull; FHIR R4 ALIGNED</text>
+  </g>
+
+  <!-- 1. SENSOR & VISION INGESTION LAYER -->
+  <g transform="translate(60, 130)">
+    <!-- Bounding Box -->
+    <rect x="0" y="0" width="310" height="340" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="16" y="16" width="278" height="32" rx="8" fill="#0B0F17" stroke="#06B6D4" stroke-width="1"/>
+    <text x="28" y="38" fill="#06B6D4" font-family="monospace" font-size="12" font-weight="bold">1. PERCEPTION &amp; HARDWARE</text>
+
+    <!-- Sub-Nodes -->
+    <rect x="16" y="62" width="278" height="52" rx="10" fill="#0B0F17" stroke="#475569" stroke-width="1"/>
+    <text x="28" y="86" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">4K OR Optical &amp; Webcam Feed</text>
+    <text x="28" y="102" fill="#94A3B8" font-family="monospace" font-size="10">WebRTC / 1080p60 Dynamic Stream</text>
+
+    <rect x="16" y="126" width="278" height="52" rx="10" fill="#0B0F17" stroke="#475569" stroke-width="1"/>
+    <text x="28" y="150" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">Gravimetric Fluid Telemetry</text>
+    <text x="28" y="166" fill="#94A3B8" font-family="monospace" font-size="10">Radwag Serial Tare Scale (1.06g/mL)</text>
+
+    <rect x="16" y="190" width="278" height="52" rx="10" fill="#0B0F17" stroke="#475569" stroke-width="1"/>
+    <text x="28" y="214" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">Field Occlusion Guard</text>
+    <text x="28" y="230" fill="#94A3B8" font-family="monospace" font-size="10">Obstruction Surface Scoring (&lt;85%)</text>
+
+    <rect x="16" y="254" width="278" height="52" rx="10" fill="#0B0F17" stroke="#475569" stroke-width="1"/>
+    <text x="28" y="278" fill="#F8FAFC" font-family="sans-serif" font-size="12" font-weight="bold">Touchless Voice Dispatcher</text>
+    <text x="28" y="294" fill="#94A3B8" font-family="monospace" font-size="10">Web Speech API / Sanitized Intents</text>
+  </g>
+
+  <!-- 2. GEMINI 2.5 FLASH MULTIMODAL REASONING LAYER -->
+  <g transform="translate(420, 130)">
+    <rect x="0" y="0" width="360" height="340" rx="16" fill="url(#geminiGrad)" stroke="#6366F1" stroke-width="2" filter="url(#glowCyan)"/>
+    <rect x="16" y="16" width="328" height="32" rx="8" fill="#0B0F17" stroke="#818CF8" stroke-width="1"/>
+    <text x="28" y="38" fill="#818CF8" font-family="monospace" font-size="12" font-weight="bold">2. MULTIMODAL OBSERVATIONAL AI</text>
+
+    <!-- Sub-Nodes -->
+    <rect x="16" y="62" width="328" height="60" rx="10" fill="#0B0F17" stroke="#4F46E5" stroke-width="1"/>
+    <text x="28" y="86" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold">Gemini 2.5 Flash Multimodal</text>
+    <text x="28" y="106" fill="#C7D2FE" font-family="monospace" font-size="10">Structured JSON Schema (Zod Validated)</text>
+
+    <rect x="16" y="134" width="328" height="54" rx="10" fill="#0B0F17" stroke="#4F46E5" stroke-width="1"/>
+    <text x="28" y="156" fill="#E0E7FF" font-family="sans-serif" font-size="12" font-weight="bold">Radiopaque Tag Detector</text>
+    <text x="28" y="174" fill="#A5B4FC" font-family="monospace" font-size="10">Barium Sulphate Blue Strip Verification</text>
+
+    <rect x="16" y="200" width="328" height="54" rx="10" fill="#0B0F17" stroke="#4F46E5" stroke-width="1"/>
+    <text x="28" y="222" fill="#E0E7FF" font-family="sans-serif" font-size="12" font-weight="bold">ATC Spoken OR Audio Synthesis</text>
+    <text x="28" y="240" fill="#A5B4FC" font-family="monospace" font-size="10">Hands-Free Natural Audio Alerting</text>
+
+    <!-- Axiom Badge -->
+    <rect x="16" y="266" width="328" height="54" rx="10" fill="#1E1B4B" stroke="#6366F1" stroke-width="1"/>
+    <text x="28" y="288" fill="#F43F5E" font-family="monospace" font-size="11" font-weight="bold">SAFETY AXIOM INTERLOCK:</text>
+    <text x="28" y="306" fill="#CBD5E1" font-family="sans-serif" font-size="11">&ldquo;Rules Engine Decides, AI Explains&rdquo;</text>
+  </g>
+
+  <!-- 3. DETERMINISTIC SAFETY KERNEL & SOVEREIGN GATE -->
+  <g transform="translate(830, 130)">
+    <rect x="0" y="0" width="310" height="340" rx="16" fill="url(#kernelGrad)" stroke="#10B981" stroke-width="2" filter="url(#glowEmerald)"/>
+    <rect x="16" y="16" width="278" height="32" rx="8" fill="#0B0F17" stroke="#10B981" stroke-width="1"/>
+    <text x="28" y="38" fill="#10B981" font-family="monospace" font-size="12" font-weight="bold">3. DETERMINISTIC SAFETY KERNEL</text>
+
+    <!-- Sub-Nodes -->
+    <rect x="16" y="62" width="278" height="60" rx="10" fill="#0B0F17" stroke="#059669" stroke-width="1"/>
+    <text x="28" y="86" fill="#ECFDF5" font-family="sans-serif" font-size="12" font-weight="bold">Pure Balance Matrix Engine</text>
+    <text x="28" y="106" fill="#6EE7B7" font-family="monospace" font-size="11">Delta = Baseline - TrayOut</text>
+
+    <rect x="16" y="134" width="278" height="54" rx="10" fill="#0B0F17" stroke="#059669" stroke-width="1"/>
+    <text x="28" y="156" fill="#ECFDF5" font-family="sans-serif" font-size="12" font-weight="bold">WHO 3-Phase Checklist Gate</text>
+    <text x="28" y="174" fill="#6EE7B7" font-family="monospace" font-size="10">Mandatory Sign-Out Verification</text>
+
+    <!-- Gate Outcome Badges -->
+    <rect x="16" y="200" width="132" height="120" rx="10" fill="#064E3B" stroke="#34D399" stroke-width="2"/>
+    <text x="26" y="226" fill="#A7F3D0" font-family="monospace" font-size="11" font-weight="bold">SOVEREIGN</text>
+    <text x="26" y="254" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="black">CLEARED</text>
+    <text x="26" y="278" fill="#34D399" font-family="sans-serif" font-size="16" font-weight="black">[GO]</text>
+    <text x="26" y="302" fill="#D1FAE5" font-family="monospace" font-size="9">&Delta;=0 &bull; Cavity=0</text>
+
+    <rect x="162" y="200" width="132" height="120" rx="10" fill="#7F1D1D" stroke="#F87171" stroke-width="2"/>
+    <text x="172" y="226" fill="#FECACA" font-family="monospace" font-size="11" font-weight="bold">DISCREPANCY</text>
+    <text x="172" y="254" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="black">HOLD</text>
+    <text x="172" y="278" fill="#EF4444" font-family="sans-serif" font-size="16" font-weight="black">[LOCKED]</text>
+    <text x="172" y="302" fill="#FEE2E2" font-family="monospace" font-size="9">&Delta;&ne;0 | Cavity&gt;0</text>
+  </g>
+
+  <!-- 4. BOTTOM INTEROPERABILITY & AUDIT BLACKBOX LAYER -->
+  <g transform="translate(60, 500)">
+    <rect x="0" y="0" width="1080" height="175" rx="16" fill="url(#cardGrad)" stroke="#64748B" stroke-width="1.5"/>
+    <rect x="16" y="16" width="1048" height="28" rx="6" fill="#0B0F17" stroke="#38BDF8" stroke-width="1"/>
+    <text x="28" y="35" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold">4. CRYPTOGRAPHIC AUDIT BLACKBOX &amp; HL7 FHIR R4 INTEROPERABILITY</text>
+
+    <!-- Card 4A: SHA-256 Ledger -->
+    <rect x="16" y="56" width="510" height="100" rx="12" fill="#0B0F17" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="82" fill="#F1F5F9" font-family="sans-serif" font-size="13" font-weight="bold">Tamper-Evident SHA-256 Merkle Ledger</text>
+    <text x="32" y="104" fill="#06B6D4" font-family="monospace" font-size="11">Hash(n) = SHA256(Index + Timestamp + EventType + Payload + Hash(n-1))</text>
+    <text x="32" y="130" fill="#94A3B8" font-family="sans-serif" font-size="11">Immutable event logging with real-time broken-block tamper detection.</text>
+
+    <!-- Card 4B: FHIR R4 Standard -->
+    <rect x="554" y="56" width="510" height="100" rx="12" fill="#0B0F17" stroke="#334155" stroke-width="1"/>
+    <text x="570" y="82" fill="#F1F5F9" font-family="sans-serif" font-size="13" font-weight="bold">HL7 FHIR R4 Electronic Health Record Standard</text>
+    <text x="570" y="104" fill="#A855F7" font-family="monospace" font-size="11">LOINC 80347-8 (Count Panel) &bull; LOINC 55284-4 (EBL) &bull; SNOMED 80146002</text>
+    <text x="570" y="130" fill="#94A3B8" font-family="sans-serif" font-size="11">Automated transaction bundle export ready for Epic/Cerner EHR ingestion.</text>
+  </g>
+
+  <!-- Connective Glowing Arrows -->
+  <path d="M 370 230 L 415 230" fill="none" stroke="#06B6D4" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+  <path d="M 780 230 L 825 230" fill="none" stroke="#06B6D4" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+  <path d="M 985 470 L 985 495" fill="none" stroke="#10B981" stroke-width="2.5" marker-end="url(#arrowEmerald)"/>
+  <path d="M 600 470 L 600 495" fill="none" stroke="#A855F7" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+</svg>
