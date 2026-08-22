@@ -107,19 +107,29 @@ $$\text{CurrentHash}_k = \text{SHA256}(\text{Index}_k \,\|\, \text{Timestamp}_k 
 
 ---
 
-### 5. Visual Interface Previews
+## 5. Visual Interface Previews
 
-#### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
-![Scenario A Nominal Cleared](./docs/screenshots/cockpit-nominal-cleared.svg)
+<div align="center">
 
-#### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
-![Scenario B Discrepancy Hold](./docs/screenshots/discrepancy-sponge-hold.svg)
+### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
+<img src="docs/screenshots/cockpit-nominal-cleared.svg" alt="Scenario A: Nominal Cleared" width="100%" />
 
-#### Gravimetric Blood Loss (EBL) Telemetry Panel
-![Gravimetric Blood Loss Telemetry](./docs/screenshots/gravimetric-ebl-telemetry.svg)
+<br/><br/>
 
-#### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
-![SHA-256 Audit Tamper Detection](./docs/screenshots/sha256-audit-tamper-detection.svg)
+### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
+<img src="docs/screenshots/discrepancy-sponge-hold.svg" alt="Scenario B: Discrepancy Hold" width="100%" />
+
+<br/><br/>
+
+### Gravimetric Blood Loss (EBL) Telemetry Panel
+<img src="docs/screenshots/gravimetric-ebl-telemetry.svg" alt="Gravimetric Blood Loss Telemetry" width="100%" />
+
+<br/><br/>
+
+### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
+<img src="docs/screenshots/sha256-audit-tamper-detection.svg" alt="SHA-256 Audit Tamper Detection" width="100%" />
+
+</div>
 
 ---
 
