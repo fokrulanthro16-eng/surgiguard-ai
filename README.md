@@ -165,59 +165,29 @@ $$\text{CurrentHash}_k = \text{SHA256}(\text{Index}_k \,\|\, \text{Timestamp}_k 
 
 ---
 
-## 5. Visual Interface Previews (Obsidian Cockpit HUD)
+## 5. Visual Interface Previews (Live Obsidian Cockpit)
 
-### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
-```text
-┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ SURGIGUARD AI v2.0 │ CASE #SG-9042 │ PROCEDURE: LAPAROSCOPIC COLECTOMY │ PHASE: PRE-CLOSURE      │
-├──────────────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                                  │
-│   ████████████████████████████████████████████████████████████████████████████████████████████   │
-│   ██                   GATE STATUS: [ CLEARED — CLOSURE AUTHORIZED (GO) ]                   ██   │
-│   ████████████████████████████████████████████████████████████████████████████████████████████   │
-│                                                                                                  │
-│  [ TRAY VISION VIEWPORT ]                    [ DETERMINISTIC REGISTRY MATRIX ]                   │
-│  ┌────────────────────────────────────────┐  ┌────────────────────────────────────────────────┐  │
-│  │ 🟢 Lap Sponge #1-10 [CONFIRMED x10]     │  │ Item            Base   Cavity  Tray   Delta  Status│ │
-│  │ 🟢 Suture Needles   [CONFIRMED x5]      │  │ ──────────────────────────────────────────────│ │
-│  │ 🟢 Hemostats        [CONFIRMED x4]      │  │ Lap Sponge 18"   10      0      10      0    MATCH│ │
-│  │ 🟢 Scalpels         [CONFIRMED x2]      │  │ Suture Needle 3-0 5      0       5      0    MATCH│ │
-│  │                                        │  │ Hemostat Clamp   4      0       4      0    MATCH│ │
-│  │ Occlusion Level: 0.0% (CLEAR FIELD)    │  │ Scalpel #10      2      0       2      0    MATCH│ │
-│  └────────────────────────────────────────┘  └────────────────────────────────────────────────┘  │
-│                                                                                                  │
-│  [ GRAVIMETRIC TELEMETRY ]                   [ CRYPTOGRAPHIC AUDIT BLACKBOX ]                    │
-│  • Scale Wet Mass: 124.0 g                   • Chain Status: VALID (42 Blocks Verified)          │
-│  • Dry Baseline Tare: 20.0 g                 • Latest Hash: 8f3b2a...c019                        │
-│  • Estimated Blood Loss: 98.11 mL [NORMAL]   • WHO 3-Phase Safety Checklist: PASSED (100%)       │
-└──────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+<div align="center">
 
-### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
-```text
-┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ SURGIGUARD AI v2.0 │ CASE #SG-9042 │ PROCEDURE: LAPAROSCOPIC COLECTOMY │ PHASE: PRE-CLOSURE      │
-├──────────────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                                  │
-│   ████████████████████████████████████████████████████████████████████████████████████████████   │
-│   ██            CRITICAL HAZARD: [ DISCREPANCY (HOLD) — CLOSURE INTERLOCKED ]               ██   │
-│   ████████████████████████████████████████████████████████████████████████████████████████████   │
-│                                                                                                  │
-│  [ TRAY VISION VIEWPORT ]                    [ DETERMINISTIC REGISTRY MATRIX ]                   │
-│  ┌────────────────────────────────────────┐  ┌────────────────────────────────────────────────┐  │
-│  │ 🔴 MISSING ITEM DETECTED: Lap Sponge #3│  │ Item            Base   Cavity  Tray   Delta  Status│ │
-│  │ 🟢 Suture Needles   [CONFIRMED x5]      │  │ ──────────────────────────────────────────────│ │
-│  │ 🟢 Hemostats        [CONFIRMED x4]      │  │ Lap Sponge 18"   10      0       9     -1   ⚠️HOLD│ │
-│  │                                        │  │ Suture Needle 3-0 5      0       5      0    MATCH│ │
-│  │ Audio: "Critical: Sponge #3 unaccounted│  │ Hemostat Clamp   4      0       4      0    MATCH│ │
-│  └────────────────────────────────────────┘  └────────────────────────────────────────────────┘  │
-│                                                                                                  │
-│  [ RECONCILIATION INSTRUCTIONS ]             [ AUDIT EVENT LOG ]                                 │
-│  • ACTION REQUIRED: Inspect abdominal cavity • Event #43: RECONCILIATION_FAILED (Delta: -1)      │
-│  • CLOSURE PERMIT: DENIED [FAIL-CLOSED]      • Merkle Commit: e91a7c...44a1 [LOCKED]             │
-└──────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+### 1. Nominal Surgical Count & Gate Cleared (`CLEARED [GO]`)
+<img src="./docs/screenshots/01-nominal-cleared-go.png" alt="Nominal Cleared GO" width="100%" />
+
+<br/><br/>
+
+### 2. Missing Item Hazard Interlock (`DISCREPANCY [HOLD]`)
+<img src="./docs/screenshots/02-discrepancy-hazard-hold.png" alt="Discrepancy Hazard HOLD" width="100%" />
+
+<br/><br/>
+
+### 3. Gravimetric Blood-Loss (EBL) Telemetry & Voice HUD
+<img src="./docs/screenshots/03-gravimetric-telemetry.png" alt="Gravimetric Blood Loss Telemetry" width="100%" />
+
+<br/><br/>
+
+### 4. SHA-256 Cryptographic Audit Ledger & Tamper Detection
+<img src="./docs/screenshots/04-sha256-audit-tamper.png" alt="SHA-256 Tamper Detection" width="100%" />
+
+</div>
 
 ---
 
