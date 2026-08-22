@@ -71,10 +71,10 @@ Retained Foreign Objects (**RFOs**) remain one of the most catastrophic and pers
 ## 3. High-Assurance Architecture Diagrams
 
 ### System Architecture Diagram
-![SurgiGuard AI System Architecture](./docs/architecture-diagram.svg)
+![SurgiGuard AI System Architecture](https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/architecture-diagram.svg)
 
 ### Intra-Operative Clinical Data Flow
-![SurgiGuard AI Data Flow Pipeline](./docs/data-flow.svg)
+![SurgiGuard AI Data Flow Pipeline](https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/data-flow.svg)
 
 ---
 
@@ -112,22 +112,22 @@ $$\text{CurrentHash}_k = \text{SHA256}(\text{Index}_k \,\|\, \text{Timestamp}_k 
 <div align="center">
 
 ### Scenario A: Nominal Balanced Counts & Gate Cleared (`CLEARED [GO]`)
-<img src="docs/screenshots/cockpit-nominal-cleared.svg" alt="Scenario A: Nominal Cleared" width="100%" />
+<img src="https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/screenshots/cockpit-nominal-cleared.svg" alt="Scenario A Nominal Cleared" width="100%" />
 
 <br/><br/>
 
 ### Scenario B: Missing Lap Sponge #3 Hazard Hold (`DISCREPANCY [HOLD]`)
-<img src="docs/screenshots/discrepancy-sponge-hold.svg" alt="Scenario B: Discrepancy Hold" width="100%" />
+<img src="https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/screenshots/discrepancy-sponge-hold.svg" alt="Scenario B Discrepancy Hold" width="100%" />
 
 <br/><br/>
 
 ### Gravimetric Blood Loss (EBL) Telemetry Panel
-<img src="docs/screenshots/gravimetric-ebl-telemetry.svg" alt="Gravimetric Blood Loss Telemetry" width="100%" />
+<img src="https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/screenshots/gravimetric-ebl-telemetry.svg" alt="Gravimetric Blood Loss Telemetry" width="100%" />
 
 <br/><br/>
 
 ### Cryptographic SHA-256 Merkle Ledger & Malicious Tamper Detection
-<img src="docs/screenshots/sha256-audit-tamper-detection.svg" alt="SHA-256 Audit Tamper Detection" width="100%" />
+<img src="https://raw.githubusercontent.com/fokrulanthro16-eng/surgiguard-ai/main/docs/screenshots/sha256-audit-tamper-detection.svg" alt="SHA-256 Audit Tamper Detection" width="100%" />
 
 </div>
 
